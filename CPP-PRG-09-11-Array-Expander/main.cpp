@@ -17,18 +17,22 @@ using namespace std;
 
 int *getArraySize();
 int *fillArray(int *, int);
-void modifyArray(int *, int);
+int *modifyArray(int *, int);
+void displayArray(int *, int);
 
 int main()
 {
     int *intArrSize = nullptr;
     int *intArrNumbers = nullptr;
+    int *intArrNumbersResized = nullptr;
     
     intArrSize = getArraySize();
     
     intArrNumbers = fillArray(intArrNumbers, *intArrSize);
     
-    modifyArray(intArrNumbers, *intArrSize);
+    intArrNumbersResized = modifyArray(intArrNumbers, *intArrSize);
+    
+    displayArray(intArrNumbersResized, *intArrSize);
     
     return 0;
 }
@@ -72,7 +76,7 @@ int *fillArray(int *intArr, int intSize)
     return intArr;
 }
 
-void modifyArray(int *intArr, int intSize)
+int *modifyArray(int *intArr, int intSize)
 {
     int *intSizeNew = nullptr;
     int *intArrNew = nullptr;
@@ -93,8 +97,13 @@ void modifyArray(int *intArr, int intSize)
         intArrNew[i] = 0;
     }
     
-    for ( int i = 0 ; i < *intSizeNew ; i++)
+    return intArrNew;
+}
+
+void displayArray(int *intArr, int intSize)
+{
+    for (int i = 0 ; i < intSize * 2 ; i++)
     {
-        cout << intArrNew[i] << endl;
+        cout << intArr[i] << endl;
     }
 }
